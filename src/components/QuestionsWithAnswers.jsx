@@ -21,11 +21,13 @@ export default function QuestionWithAnswers({
   const { quizData, setQuizData } = useQuizData();
   const [continueButton, setContinueButton] = useState(false);
   const selectedIndex = quizData.findIndex((data) => data.isSelected === true);
-  if (selectedIndex !== -1 && quizData[selectedIndex].content) {
-    selectedQuestion = quizData[selectedIndex].content.findIndex(
-      (data) => data.questionIsActive === true
-    );
-  }
+
+  const selectedQuestion =
+    selectedIndex !== -1 && quizData[selectedIndex].content
+      ? quizData[selectedIndex].content.findIndex(
+          (data) => data.questionIsActive === true
+        )
+      : -1;
   const finishedQuestions = quizData[selectedIndex].content.filter(
     (q) => q.questionFinished === true
   );
