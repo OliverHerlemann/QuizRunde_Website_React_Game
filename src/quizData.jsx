@@ -432,7 +432,7 @@ const quizContent2_10 = {
 const quizContent2_11 = {
   category: "Skurriles",
   question: "Welches Tier kann beim Schlafen „stehen bleiben“ ohne Umzufallen?",
-  answerA: "Armeisenbär",
+  answerA: "Pferde",
   answerB: "Faultiere",
   answerC: "Elefanten",
   answerD: "Koalas",
@@ -1053,7 +1053,7 @@ const quizContent4_11 = {
   answerC: "intelligent",
   answerD: "unterwürfig",
   points: 10,
-  correctAnswer: "answerA",
+  correctAnswer: "answerB",
   questionIsActive: false,
   questionFinished: false,
 };
