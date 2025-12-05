@@ -25,8 +25,9 @@ export default function AppLayerTwo() {
     isTimeToAnswer: false,
     isSet: false,
   });
+
   const [soundOn, setSoundOn] = useState(true);
-  const [pointStealerFactor, setPointStealerFactor] = useState(33);
+  const [pointStealerFactor, setPointStealerFactor] = useState(25);
 
   const modalRef = useRef();
   const settingModalRef = useRef();

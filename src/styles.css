@@ -294,6 +294,7 @@ main div.quiz-grid {
   margin: 1rem 1.5rem 1rem 1.5rem;
   display: flex;
   justify-content: space-around;
+  min-width: 1600px;
 }
 main div.quiz-categories .cat-element {
   border: 3.5px solid black;
@@ -475,4 +476,12 @@ footer ol {
 footer li {
   list-style-type: none;
   margin-top: 5px;
+}
+@media (max-width: 2620px) {
+  #player-count .player {
+    width: 150px;
+  }
+  #player-count .player.play-2 {
+    width: 120px;
+  }
 }

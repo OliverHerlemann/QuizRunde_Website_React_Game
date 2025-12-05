@@ -1210,7 +1210,7 @@ const quizContent4_24 = {
   answerC: "Fußball",
   answerD: "Handball",
   points: 40,
-  correctAnswer: "answerA",
+  correctAnswer: "answerC",
   questionIsActive: false,
   questionFinished: false,
 };
