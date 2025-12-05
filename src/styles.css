@@ -477,7 +477,7 @@ footer li {
   list-style-type: none;
   margin-top: 5px;
 }
-@media (max-width: 2620px) {
+@media (max-width: 620px) {
   #player-count .player {
     width: 150px;
   }
