@@ -10,7 +10,9 @@ export default function Settings({
   setPlayerCount,
   showModal,
   showSettingsModal,
+  showQuestionTimerModal,
   pointStealerFactor,
+  questionTime,
 }) {
   const { quizData, setQuizData } = useQuizData();
   const selectedIndex = quizData.findIndex((data) => data.isSelected === true);
@@ -100,6 +102,9 @@ export default function Settings({
         <h3>Sonstige Einstellungen</h3>
         <button onClick={showSettingsModal}>
           Punkte klauen: {pointStealerFactor}%
+        </button>
+        <button onClick={showQuestionTimerModal}>
+          Fragen-Timer: {questionTime !== null ? questionTime + "s" : "Aus"}
         </button>
       </section>
       {selectedIndex === -1 && showQuizMsg && (

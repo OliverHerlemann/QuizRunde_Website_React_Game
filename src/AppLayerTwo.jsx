@@ -8,10 +8,12 @@ import { useRef, useState } from "react";
 import QuizOverview from "./components/QuizOverview.jsx";
 import QuestionWithAnswers from "./components/QuestionsWithAnswers.jsx";
 import ImpressumAndD from "./components/ImpressumAndD.jsx";
+import QuestionTimerModal from "./components/QuestionTimerModal.jsx";
 
 export default function AppLayerTwo() {
   const { quizData } = useQuizData();
   const [playerCount, setPlayerCount] = useState(1);
+  const [questionTime, setQuestionTime] = useState(null);
   const [playerOne, setPlayerOne] = useState({
     name: "Spieler 1",
     points: 0,
@@ -32,6 +34,7 @@ export default function AppLayerTwo() {
   const modalRef = useRef();
   const settingModalRef = useRef();
   const winnerModalRef = useRef();
+  const questionTimerModalRef = useRef();
   const activeIndex = quizData.findIndex((item) => item.quizStarted === true);
   const selectedIndex = quizData.findIndex((data) => data.isSelected === true);
   const selectedQuestion =
@@ -48,6 +51,9 @@ export default function AppLayerTwo() {
   const closeSettingsModal = () => settingModalRef.current?.close();
   const showWinnerModal = () => winnerModalRef.current?.showModal();
   const closeWinnerModal = () => winnerModalRef.current?.close();
+  const showQuestionTimerModal = () =>
+    questionTimerModalRef.current?.showModal();
+  const closeQuestionTimerModal = () => questionTimerModalRef.current?.close();
 
   return (
     <div className="App">
@@ -66,6 +72,11 @@ export default function AppLayerTwo() {
           setPointStealerFactor={setPointStealerFactor}
           pointStealerFactor={pointStealerFactor}
         />
+        <QuestionTimerModal
+          ref={questionTimerModalRef}
+          setQuestionTime={setQuestionTime}
+          questionTime={questionTime}
+        />
         <WinnerModal
           ref={winnerModalRef}
           playerOne={playerOne}
@@ -79,6 +90,7 @@ export default function AppLayerTwo() {
           <Settings
             showModal={showModal}
             showSettingsModal={showSettingsModal}
+            showQuestionTimerModal={showQuestionTimerModal}
             playerOne={playerOne}
             playerTwo={playerTwo}
             setPlayerOne={setPlayerOne}
@@ -87,6 +99,7 @@ export default function AppLayerTwo() {
             setPlayerCount={setPlayerCount}
             setPointStealerFactor={setPointStealerFactor}
             pointStealerFactor={pointStealerFactor}
+            questionTime={questionTime}
           />
         )}
         {activeIs && selectedQuestion === -1 ? (
