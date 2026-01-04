@@ -9,6 +9,9 @@ import QuizOverview from "./components/QuizOverview.jsx";
 import QuestionWithAnswers from "./components/QuestionsWithAnswers.jsx";
 import ImpressumAndD from "./components/ImpressumAndD.jsx";
 import QuestionTimerModal from "./components/QuestionTimerModal.jsx";
+import WannWarEsSettingsModal from "./components/WannWarEsSettingsModal.jsx";
+import WannWarEsEreignis from "./components/WannWarEsEreignis.jsx";
+import WannWarEsTimeline from "./components/WannWarEsTimeline.jsx";
 
 export default function AppLayerTwo() {
   const { quizData } = useQuizData();
@@ -28,10 +31,18 @@ export default function AppLayerTwo() {
     isSet: false,
   });
 
+  const [quizModus, setQuizModus] = useState(undefined);
+  const [startQuiz, setStartQuiz] = useState(undefined);
   const [soundOn, setSoundOn] = useState(true);
   const [pointStealerFactor, setPointStealerFactor] = useState(25);
+  const [ereignis, setEreignis] = useState(null);
+  const [ereignisArrays, setEreignisArrays] = useState({
+    playerOne: [0, 3, 0],
+    playerTwo: [0, 9, 0],
+  });
 
   const modalRef = useRef();
+  const WannWarEsModalRef = useRef();
   const settingModalRef = useRef();
   const winnerModalRef = useRef();
   const questionTimerModalRef = useRef();
@@ -47,6 +58,8 @@ export default function AppLayerTwo() {
 
   const showModal = () => modalRef.current?.showModal();
   const closeModal = () => modalRef.current?.close();
+  const showWannWarEsModal = () => WannWarEsModalRef.current?.showModal();
+  const closeWannWarEsModal = () => WannWarEsModalRef.current?.close();
   const showSettingsModal = () => settingModalRef.current?.showModal();
   const closeSettingsModal = () => settingModalRef.current?.close();
   const showWinnerModal = () => winnerModalRef.current?.showModal();
@@ -57,6 +70,7 @@ export default function AppLayerTwo() {
 
   return (
     <div className="App">
+      <div class="bg-pattern"></div>
       <Header
         quizActive={activeIs}
         playerOne={playerOne}
@@ -64,9 +78,14 @@ export default function AppLayerTwo() {
         playerCount={playerCount}
         setSoundOn={setSoundOn}
         soundOn={soundOn}
+        startQuiz={startQuiz}
       />
       <main>
-        <QuizSelectionModal ref={modalRef} />
+        <QuizSelectionModal ref={modalRef} setQuizModus={setQuizModus} />
+        <WannWarEsSettingsModal
+          ref={WannWarEsModalRef}
+          setQuizModus={setQuizModus}
+        />
         <SettingModal
           ref={settingModalRef}
           setPointStealerFactor={setPointStealerFactor}
@@ -86,9 +105,10 @@ export default function AppLayerTwo() {
           setPlayerTwo={setPlayerTwo}
           soundOn={soundOn}
         />
-        {!activeIs && (
+        {!startQuiz && !activeIs && (
           <Settings
             showModal={showModal}
+            showWannWarEsModal={showWannWarEsModal}
             showSettingsModal={showSettingsModal}
             showQuestionTimerModal={showQuestionTimerModal}
             playerOne={playerOne}
@@ -100,12 +120,15 @@ export default function AppLayerTwo() {
             setPointStealerFactor={setPointStealerFactor}
             pointStealerFactor={pointStealerFactor}
             questionTime={questionTime}
+            quizModus={quizModus}
+            setStartQuiz={setStartQuiz}
           />
         )}
-        {activeIs && selectedQuestion === -1 ? (
+        {activeIs && quizModus === null && selectedQuestion === -1 ? (
           <QuizOverview />
         ) : (
-          selectedQuestion > -1 && (
+          selectedQuestion > -1 &&
+          quizModus === null && (
             <QuestionWithAnswers
               playerOne={playerOne}
               setPlayerOne={setPlayerOne}
@@ -118,6 +141,20 @@ export default function AppLayerTwo() {
             />
           )
         )}
+        {quizModus === "WannWarEs" && startQuiz && 
+        <>
+          <WannWarEsTimeline 
+            playerCount={playerCount}
+            ereignis={ereignis}
+            setEreignisArrays={setEreignisArrays}
+            ereignisArrays={ereignisArrays}
+          />
+          <WannWarEsEreignis
+            ereignis={ereignis}
+            setEreignis={setEreignis}
+          />
+        </>
+        }
       </main>
       <footer>
         <ImpressumAndD />
