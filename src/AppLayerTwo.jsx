@@ -128,6 +128,9 @@ export default function AppLayerTwo() {
             setPlayerOne={setPlayerOne}
             setPlayerTwo={setPlayerTwo}
             soundOn={soundOn}
+            setQuizModus={setQuizModus}
+            setStartQuiz={setStartQuiz}
+            setEreignisArrays={setEreignisArrays}
         />
         {!startQuiz && !activeIs && (
           <Settings

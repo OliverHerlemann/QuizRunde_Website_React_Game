@@ -35,7 +35,7 @@ export default function WannWarEsSettingsModal({ ref, setQuizModus }) {
           den Punkt!
         </p>
         <p>
-          Das Spiel ist beendet wenn das erste Team 24 Punkte (pro richtig
+          Das Spiel ist beendet wenn das erste Team 18 Punkte (pro richtig
           eingeordnetes Ereignis = ein Punkt) gesammelt hat.
         </p>
         <div className="modal-actions">

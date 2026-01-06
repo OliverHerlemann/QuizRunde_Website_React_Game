@@ -40,18 +40,15 @@ export default function WannWarEsTimeline({
   useEffect(() => {
     // Singleplayer sofort beenden
     if (playerCount === 1) {
-      if (playerOne.points >= 2) {
+      if (playerOne.points >= 18) {
         showWWEWinnerModal();
       }
       return;
     }
-  
     // Multiplayer:
-    // Spiel endet nur, wenn jemand 2 Punkte hat
-    // UND der andere Spieler gerade NICHT mehr am Zug ist
     if (
-      (playerOne.points >= 2 && !playerTwo.isTimeToAnswer) ||
-      (playerTwo.points >= 2)
+      (playerOne.points >= 18 && !playerTwo.isTimeToAnswer) ||
+      playerTwo.points >= 18
     ) {
       showWWEWinnerModal();
     }
@@ -200,7 +197,6 @@ export default function WannWarEsTimeline({
     if (playerCount > 1) {
       switchTurn();
     }
-    
   }
 
   return (
