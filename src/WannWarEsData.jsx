@@ -933,6 +933,144 @@ const wann117 = {
   description:
     "Die Menschheit überschritt die Marke von acht Milliarden. Dies zeigt das anhaltende Bevölkerungswachstum. Ereignisse wie diese werden global beachtet.",
 };
+const wann118 = {
+  title: "Ausbruch des Vesuvs und Zerstörung der Stadt Pompeji",
+  caption: "Vesuv-Ausbruch",
+  date: "24. August 79",
+  description:
+    "Der Vulkan Vesuv brach aus und begrub Pompeji unter Asche. Zahlreiche Menschen starben. Das Ereignis hinterließ eine der am besten dokumentierten antiken Katastrophen.",
+};
+
+const wann119 = {
+  title: "Fall von Konstantinopel und Ende des Byzantinischen Reiches",
+  caption: "Konstantinopel fällt",
+  date: "29. Mai 1453",
+  description:
+    "Osmanische Truppen eroberten die Stadt Konstantinopel. Damit endete das Byzantinische Reich. Das Ereignis veränderte die politische und religiöse Landkarte Europas.",
+};
+
+const wann120 = {
+  title: "Barrikadenkämpfe während der Märzrevolution in Berlin",
+  caption: "Barrikaden Berlin",
+  date: "18. März 1848",
+  description:
+    "Bürger errichteten Barrikaden gegen die preußische Armee. Die Kämpfe waren Teil der gesamtdeutschen Märzrevolution. Sie führten zu politischen Reformen in Preußen.",
+};
+
+const wann121 = {
+  title: "Beginn des Baus der Berliner Mauer zur Teilung der Stadt",
+  caption: "Mauerbau Berlin",
+  date: "13. August 1961",
+  description:
+    "Die DDR begann, eine Mauer durch Berlin zu errichten. Sie trennte Familien und Freunde. Die Mauer wurde zum Symbol des Kalten Krieges.",
+};
+
+const wann122 = {
+  title:
+    "Deutsche Wiedervereinigung nach der Teilung in Ost- und Westdeutschland",
+  caption: "Wiedervereinigung",
+  date: "3. Oktober 1990",
+  description:
+    "Ost- und Westdeutschland wurden offiziell wieder vereint. Die Mauer war kurz zuvor gefallen. Die Wiedervereinigung markierte einen historischen Wendepunkt.",
+};
+
+const wann123 = {
+  title: "Offizielle Auflösung der Sowjetunion und Ende des Kalten Krieges",
+  caption: "Sowjetunion endet",
+  date: "26. Dezember 1991",
+  description:
+    "Die Sowjetunion wurde formell aufgelöst. Ihre Mitgliedsstaaten wurden unabhängig. Dies beendete eine Ära geopolitischer Spannungen.",
+};
+
+const wann124 = {
+  title: "Durchführung der ersten modernen Olympischen Spiele in Athen",
+  caption: "Erste Olympische Spiele",
+  date: "6. April 1896",
+  description:
+    "Die Spiele fanden in Athen statt. Athleten aus mehreren Nationen nahmen teil. Sie begründeten die Tradition der modernen Olympischen Spiele.",
+};
+
+const wann125 = {
+  title: "Schlacht bei Actium zwischen Octavian und Marcus Antonius",
+  caption: "Schlacht bei Actium",
+  date: "2. September 31 v. Chr.",
+  description:
+    "Octavian besiegte Marcus Antonius und Kleopatra. Die Schlacht markierte das Ende des Römischen Bürgerkriegs. Octavian wurde später Kaiser Augustus.",
+};
+
+const wann126 = {
+  title: "Vasco da Gama erreicht Indien auf dem Seeweg um Afrika",
+  caption: "Da Gama in Indien",
+  date: "20. Mai 1498",
+  description:
+    "Vasco da Gama segelte erfolgreich von Portugal nach Indien. Dies eröffnete den Seehandel zwischen Europa und Asien. Die Entdeckung hatte weitreichende wirtschaftliche Folgen.",
+};
+
+const wann127 = {
+  title: "Ferdinand Magellan umsegelt als erster die Erde",
+  caption: "Magellan Weltumsegelung",
+  date: "6. September 1519",
+  description:
+    "Magellan startete die erste Expedition, die die Erde umrundete. Er bewies, dass die Welt rund ist und vollständig befahrbar. Die Reise war historisch bedeutsam.",
+};
+
+const wann128 = {
+  title: "Erste Entdeckung eines Asteroiden durch Giuseppe Piazzi",
+  caption: "Ceres entdeckt",
+  date: "1. Januar 1801",
+  description:
+    "Piazzi entdeckte das erste bekannte Objekt im Asteroidengürtel, Ceres. Dies war der Beginn der modernen Asteroidenforschung. Ceres ist heute als Zwergplanet klassifiziert.",
+};
+
+const wann129 = {
+  title: "Entdeckung des Penicillins durch Alexander Fleming",
+  caption: "Penicillin entdeckt",
+  date: "28. September 1928",
+  description:
+    "Fleming entdeckte eine Substanz, die Bakterien abtötet. Diese Entdeckung führte zur Entwicklung von Antibiotika. Sie rettete Millionen von Menschenleben.",
+};
+
+const wann130 = {
+  title:
+    "Schwarzer Montag: schwerer Börsencrash an den internationalen Finanzmärkten",
+  caption: "Schwarzer Montag",
+  date: "19. Oktober 1987",
+  description:
+    "Die Börsen weltweit stürzten stark ab. Viele Investoren verloren erhebliche Vermögen. Der Tag bleibt als einer der größten Finanzcrashs der Geschichte in Erinnerung.",
+};
+
+const wann131 = {
+  title: "Start von Sputnik 1, dem ersten künstlichen Satelliten der Erde",
+  caption: "Sputnik 1 startet",
+  date: "4. Oktober 1957",
+  description:
+    "Die Sowjetunion startete den ersten Satelliten in die Erdumlaufbahn. Dies markierte den Beginn des Weltraumzeitalters. Sputnik löste internationalen Wettlauf ins All aus.",
+};
+
+const wann132 = {
+  title: "Ermordung des Musikers John Lennon in New York",
+  caption: "John Lennon ermordet",
+  date: "8. Dezember 1980",
+  description:
+    "John Lennon wurde vor seinem Wohnhaus erschossen. Sein Tod erschütterte Fans weltweit. Lennon gilt bis heute als Symbol für Frieden und Musik.",
+};
+
+const wann133 = {
+  title: "Freilassung von Nelson Mandela nach jahrzehntelanger Inhaftierung",
+  caption: "Mandela freigelassen",
+  date: "11. Februar 1990",
+  description:
+    "Nelson Mandela wurde aus dem Gefängnis entlassen. Er hatte gegen das Apartheidregime in Südafrika gekämpft. Seine Freilassung markierte einen Wendepunkt für die Demokratie.",
+};
+
+const wann134 = {
+  title:
+    "Offizieller Austritt des Vereinigten Königreichs aus der Europäischen Union",
+  caption: "Brexit",
+  date: "31. Januar 2020",
+  description:
+    "Das Vereinigte Königreich verließ formal die EU. Dies folgte auf ein Referendum von 2016. Der Brexit veränderte die politische und wirtschaftliche Lage in Europa.",
+};
 
 export const WannWarEsData = [
   wann1,
@@ -946,4 +1084,127 @@ export const WannWarEsData = [
   wann9,
   wann10,
   wann11,
+  wann12,
+  wann13,
+  wann14,
+  wann15,
+  wann16,
+  wann17,
+  wann18,
+  wann19,
+  wann20,
+  wann21,
+  wann22,
+  wann23,
+  wann24,
+  wann25,
+  wann26,
+  wann27,
+  wann28,
+  wann29,
+  wann30,
+  wann31,
+  wann32,
+  wann33,
+  wann34,
+  wann35,
+  wann36,
+  wann37,
+  wann38,
+  wann39,
+  wann40,
+  wann41,
+  wann42,
+  wann43,
+  wann44,
+  wann45,
+  wann46,
+  wann47,
+  wann48,
+  wann49,
+  wann50,
+  wann51,
+  wann52,
+  wann53,
+  wann54,
+  wann55,
+  wann56,
+  wann57,
+  wann58,
+  wann59,
+  wann60,
+  wann61,
+  wann62,
+  wann63,
+  wann64,
+  wann65,
+  wann66,
+  wann67,
+  wann68,
+  wann69,
+  wann70,
+  wann71,
+  wann72,
+  wann73,
+  wann74,
+  wann75,
+  wann76,
+  wann77,
+  wann78,
+  wann79,
+  wann80,
+  wann81,
+  wann82,
+  wann83,
+  wann84,
+  wann85,
+  wann86,
+  wann87,
+  wann88,
+  wann89,
+  wann90,
+  wann91,
+  wann92,
+  wann93,
+  wann94,
+  wann95,
+  wann96,
+  wann97,
+  wann98,
+  wann99,
+  wann100,
+  wann101,
+  wann102,
+  wann103,
+  wann104,
+  wann105,
+  wann106,
+  wann107,
+  wann108,
+  wann109,
+  wann110,
+  wann111,
+  wann112,
+  wann113,
+  wann114,
+  wann115,
+  wann116,
+  wann117,
+  wann118,
+  wann119,
+  wann120,
+  wann121,
+  wann122,
+  wann123,
+  wann124,
+  wann125,
+  wann126,
+  wann127,
+  wann128,
+  wann129,
+  wann130,
+  wann131,
+  wann132,
+  wann133,
+  wann134,
 ];

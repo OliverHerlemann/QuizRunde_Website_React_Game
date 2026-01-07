@@ -114,7 +114,7 @@ export default function WannWarEsWinnerModal({
           Zurück
         </button>
         <button className="confirm" onClick={() => handleModalClick("confirm")}>
-          OK
+          Bei Timeline bleiben
         </button>
       </div>
     </dialog>

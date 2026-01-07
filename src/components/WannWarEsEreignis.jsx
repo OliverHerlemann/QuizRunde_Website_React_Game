@@ -6,7 +6,9 @@ export default function WannWarEsEreignis({
   setEreignis,
   activePlayer,
   ereignisArrays,
-  ereignisTrigger
+  ereignisTrigger,
+  playerOne,
+  playerTwo,
 }) {
   function isEreignisBereitsVerwendet(index) {
     return (
@@ -15,34 +17,38 @@ export default function WannWarEsEreignis({
     );
   }
 
-    useEffect(() => {
-      let zufallsIndex;
-      let safety = 0;
-    
-      do {
-        zufallsIndex = Math.floor(Math.random() * WannWarEsData.length);
-        safety++;
-      } while (
-        (ereignisArrays.playerOne.includes(zufallsIndex) ||
-         ereignisArrays.playerTwo.includes(zufallsIndex)) &&
-        safety < 200
-      );
-    
-      if (safety >= 200) {
-        setEreignis(null);
-        return;
-      }
-    
-      setEreignis(WannWarEsData[zufallsIndex]);
-    }, [ereignisTrigger]);
+  useEffect(() => {
+    let zufallsIndex;
+    let safety = 0;
+
+    do {
+      zufallsIndex = Math.floor(Math.random() * WannWarEsData.length);
+      safety++;
+    } while (
+      (ereignisArrays.playerOne.includes(zufallsIndex) ||
+        ereignisArrays.playerTwo.includes(zufallsIndex)) &&
+      safety < 200
+    );
+
+    if (safety >= 200) {
+      setEreignis(null);
+      return;
+    }
+
+    setEreignis(WannWarEsData[zufallsIndex]);
+  }, [ereignisTrigger]);
 
   if (!ereignis) return null;
 
   return (
     <section>
       <div className="Zufall-H-Ereignis">
-        <h3>{ereignis.title}</h3>
-        <p>{ereignis.description}</p>
+        <div id={`${playerOne.isTimeToAnswer ? "left-player" : ""}`}></div>
+        <div>
+          <h3>{ereignis.title}</h3>
+          <p>{ereignis.description}</p>
+        </div>
+        <div id={`${playerTwo.isTimeToAnswer ? "right-player" : ""}`}></div>
       </div>
     </section>
   );

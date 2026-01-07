@@ -121,16 +121,16 @@ export default function AppLayerTwo() {
           soundOn={soundOn}
         />
         <WannWarEsWinnerModal
-            ref={WannWarEswinnerModalRef}
-            playerCount={playerCount}
-            playerOne={playerOne}
-            playerTwo={playerTwo}
-            setPlayerOne={setPlayerOne}
-            setPlayerTwo={setPlayerTwo}
-            soundOn={soundOn}
-            setQuizModus={setQuizModus}
-            setStartQuiz={setStartQuiz}
-            setEreignisArrays={setEreignisArrays}
+          ref={WannWarEswinnerModalRef}
+          playerCount={playerCount}
+          playerOne={playerOne}
+          playerTwo={playerTwo}
+          setPlayerOne={setPlayerOne}
+          setPlayerTwo={setPlayerTwo}
+          soundOn={soundOn}
+          setQuizModus={setQuizModus}
+          setStartQuiz={setStartQuiz}
+          setEreignisArrays={setEreignisArrays}
         />
         {!startQuiz && !activeIs && (
           <Settings
@@ -190,6 +190,8 @@ export default function AppLayerTwo() {
               activePlayer={activePlayer}
               ereignisArrays={ereignisArrays}
               ereignisTrigger={ereignisTrigger}
+              playerOne={playerOne}
+              playerTwo={playerTwo}
             />
           </>
         )}
