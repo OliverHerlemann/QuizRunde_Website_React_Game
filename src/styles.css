@@ -553,6 +553,7 @@ p.alpha-to-omega {
   color: rgb(113, 113, 113);
   text-decoration: underline grey 2px;
   margin: 0.6rem;
+  font-size: 1.4rem;
 }
 div.dot-line {
   background: repeating-linear-gradient(
