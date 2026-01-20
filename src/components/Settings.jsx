@@ -116,14 +116,13 @@ export default function Settings({
         </ol>
       </section>
       <section className="others">
-        <h3>Sonstige Einstellungen</h3>
+        <h3>Sonstige Einstellungen (für Jeopardy)</h3>
         <button onClick={showSettingsModal}>
           Punkte klauen: {pointStealerFactor}%
         </button>{" "}
-        {/* Timerbutton! folgt:
         <button onClick={showQuestionTimerModal}>
           Fragen-Timer: {questionTime !== null ? questionTime + "s" : "Aus"}
-        </button> */}
+        </button>
       </section>
       {selectedIndex === -1 && showQuizMsg && quizModus === undefined && (
         <p id="showQuizMsg">Bitte wähle ein Quiz aus.</p>

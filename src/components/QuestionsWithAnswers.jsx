@@ -1,5 +1,6 @@
 import { useQuizData } from "./QuizDataProvider.jsx";
 import { useState } from "react";
+import TheTimer from "./TheTimer.jsx";
 
 const correctAudio = new Audio("/sounds/Cha_Ching_Pixabay.mp3");
 const falseAudio = new Audio(
@@ -17,6 +18,7 @@ export default function QuestionWithAnswers({
   soundOn,
   pointStealerFactor,
   showWinnerModal,
+  questionTime,
 }) {
   const { quizData, setQuizData } = useQuizData();
   const [continueButton, setContinueButton] = useState(false);
@@ -198,8 +200,16 @@ export default function QuestionWithAnswers({
     setContinueButton(false);
   }
 
+  function handleTimeout() {
+    if (playerCount < 2) {
+      setPlayerOneAnswer(undefined);
+    } else {
+    }
+  }
+
   return (
     <>
+      <TheTimer questionTime={questionTime} handleTimeout={handleTimeout} />
       <h2 id="points-indicator">
         Kategorie:{" "}
         {activeIs && quizData[selectedIndex].content[selectedQuestion].category}{" "}

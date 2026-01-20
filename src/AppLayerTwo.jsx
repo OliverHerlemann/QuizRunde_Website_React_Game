@@ -165,6 +165,7 @@ export default function AppLayerTwo() {
               soundOn={soundOn}
               pointStealerFactor={pointStealerFactor}
               showWinnerModal={showWinnerModal}
+              questionTime={questionTime}
             />
           )
         )}
