@@ -22,7 +22,7 @@ export default function TheTimer({ questionTime, handleTimeout }) {
       clearTimeout(timer);
       clearInterval(interval);
     };
-  }, [questionTime, handleTimeout]);
+  }, []);
 
   return (
     <>

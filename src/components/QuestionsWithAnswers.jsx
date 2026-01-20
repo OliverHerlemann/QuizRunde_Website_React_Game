@@ -201,8 +201,12 @@ export default function QuestionWithAnswers({
   }
 
   function handleTimeout() {
-    if (playerCount < 2) {
-      setPlayerOneAnswer(undefined);
+    falseAudio.currentTime = 0;
+    falseAudio.volume = 0.6;
+    falseAudio.play();
+
+    if (playerCount === 1) {
+      setPlayerOneAnswer(undefined); // Muss geändert werden funktioniert so nicht!
     } else {
     }
   }

@@ -30,7 +30,7 @@ button.X {
   color: red;
   border: none;
   font-size: 1.4rem;
-  background-color: #fffdf5;
+  background-color: transparent;
   display: inline-block;
 }
 .input-grp {
