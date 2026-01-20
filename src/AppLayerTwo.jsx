@@ -8,10 +8,17 @@ import { useRef, useState } from "react";
 import QuizOverview from "./components/QuizOverview.jsx";
 import QuestionWithAnswers from "./components/QuestionsWithAnswers.jsx";
 import ImpressumAndD from "./components/ImpressumAndD.jsx";
+import QuestionTimerModal from "./components/QuestionTimerModal.jsx";
+import WannWarEsSettingsModal from "./components/WannWarEsSettingsModal.jsx";
+import WannWarEsEreignis from "./components/WannWarEsEreignis.jsx";
+import WannWarEsTimeline from "./components/WannWarEsTimeline.jsx";
+import { WannWarEsData } from "./WannWarEsData.jsx";
+import WannWarEsWinnerModal from "./components/WannWarEsWinnerModal.jsx";
 
 export default function AppLayerTwo() {
   const { quizData } = useQuizData();
   const [playerCount, setPlayerCount] = useState(1);
+  const [questionTime, setQuestionTime] = useState(null);
   const [playerOne, setPlayerOne] = useState({
     name: "Spieler 1",
     points: 0,
@@ -26,12 +33,32 @@ export default function AppLayerTwo() {
     isSet: false,
   });
 
+  const zufallsIndexPlayerOne = Math.floor(
+    Math.random() * WannWarEsData.length
+  );
+  let zufallsIndexPlayerTwo;
+  do {
+    zufallsIndexPlayerTwo = Math.floor(Math.random() * WannWarEsData.length);
+  } while (zufallsIndexPlayerTwo === zufallsIndexPlayerOne);
+
+  const [activePlayer, setActivePlayer] = useState("playerOne");
+  const [quizModus, setQuizModus] = useState(undefined);
+  const [startQuiz, setStartQuiz] = useState(undefined);
   const [soundOn, setSoundOn] = useState(true);
   const [pointStealerFactor, setPointStealerFactor] = useState(25);
+  const [ereignis, setEreignis] = useState(null);
+  const [ereignisArrays, setEreignisArrays] = useState({
+    playerOne: [-1, zufallsIndexPlayerOne, -1],
+    playerTwo: [-1, zufallsIndexPlayerTwo, -1],
+  });
+  const [ereignisTrigger, setEreignisTrigger] = useState(0);
 
   const modalRef = useRef();
+  const WannWarEsModalRef = useRef();
   const settingModalRef = useRef();
   const winnerModalRef = useRef();
+  const WannWarEswinnerModalRef = useRef();
+  const questionTimerModalRef = useRef();
   const activeIndex = quizData.findIndex((item) => item.quizStarted === true);
   const selectedIndex = quizData.findIndex((data) => data.isSelected === true);
   const selectedQuestion =
@@ -44,13 +71,21 @@ export default function AppLayerTwo() {
 
   const showModal = () => modalRef.current?.showModal();
   const closeModal = () => modalRef.current?.close();
+  const showWannWarEsModal = () => WannWarEsModalRef.current?.showModal();
+  const closeWannWarEsModal = () => WannWarEsModalRef.current?.close();
   const showSettingsModal = () => settingModalRef.current?.showModal();
   const closeSettingsModal = () => settingModalRef.current?.close();
   const showWinnerModal = () => winnerModalRef.current?.showModal();
   const closeWinnerModal = () => winnerModalRef.current?.close();
+  const showWWEWinnerModal = () => WannWarEswinnerModalRef.current?.showModal();
+  const closeWWEWinnerModal = () => WannWarEswinnerModalRef.current?.close();
+  const showQuestionTimerModal = () =>
+    questionTimerModalRef.current?.showModal();
+  const closeQuestionTimerModal = () => questionTimerModalRef.current?.close();
 
   return (
     <div className="App">
+      <div class="bg-pattern"></div>
       <Header
         quizActive={activeIs}
         playerOne={playerOne}
@@ -58,13 +93,23 @@ export default function AppLayerTwo() {
         playerCount={playerCount}
         setSoundOn={setSoundOn}
         soundOn={soundOn}
+        startQuiz={startQuiz}
       />
       <main>
-        <QuizSelectionModal ref={modalRef} />
+        <QuizSelectionModal ref={modalRef} setQuizModus={setQuizModus} />
+        <WannWarEsSettingsModal
+          ref={WannWarEsModalRef}
+          setQuizModus={setQuizModus}
+        />
         <SettingModal
           ref={settingModalRef}
           setPointStealerFactor={setPointStealerFactor}
           pointStealerFactor={pointStealerFactor}
+        />
+        <QuestionTimerModal
+          ref={questionTimerModalRef}
+          setQuestionTime={setQuestionTime}
+          questionTime={questionTime}
         />
         <WinnerModal
           ref={winnerModalRef}
@@ -75,10 +120,24 @@ export default function AppLayerTwo() {
           setPlayerTwo={setPlayerTwo}
           soundOn={soundOn}
         />
-        {!activeIs && (
+        <WannWarEsWinnerModal
+          ref={WannWarEswinnerModalRef}
+          playerCount={playerCount}
+          playerOne={playerOne}
+          playerTwo={playerTwo}
+          setPlayerOne={setPlayerOne}
+          setPlayerTwo={setPlayerTwo}
+          soundOn={soundOn}
+          setQuizModus={setQuizModus}
+          setStartQuiz={setStartQuiz}
+          setEreignisArrays={setEreignisArrays}
+        />
+        {!startQuiz && !activeIs && (
           <Settings
             showModal={showModal}
+            showWannWarEsModal={showWannWarEsModal}
             showSettingsModal={showSettingsModal}
+            showQuestionTimerModal={showQuestionTimerModal}
             playerOne={playerOne}
             playerTwo={playerTwo}
             setPlayerOne={setPlayerOne}
@@ -87,12 +146,16 @@ export default function AppLayerTwo() {
             setPlayerCount={setPlayerCount}
             setPointStealerFactor={setPointStealerFactor}
             pointStealerFactor={pointStealerFactor}
+            questionTime={questionTime}
+            quizModus={quizModus}
+            setStartQuiz={setStartQuiz}
           />
         )}
-        {activeIs && selectedQuestion === -1 ? (
+        {activeIs && quizModus === null && selectedQuestion === -1 ? (
           <QuizOverview />
         ) : (
-          selectedQuestion > -1 && (
+          selectedQuestion > -1 &&
+          quizModus === null && (
             <QuestionWithAnswers
               playerOne={playerOne}
               setPlayerOne={setPlayerOne}
@@ -104,6 +167,33 @@ export default function AppLayerTwo() {
               showWinnerModal={showWinnerModal}
             />
           )
+        )}
+        {quizModus === "WannWarEs" && startQuiz && (
+          <>
+            <WannWarEsTimeline
+              playerCount={playerCount}
+              ereignis={ereignis}
+              setEreignis={setEreignis}
+              setEreignisArrays={setEreignisArrays}
+              ereignisArrays={ereignisArrays}
+              setPlayerOne={setPlayerOne}
+              setPlayerTwo={setPlayerTwo}
+              playerOne={playerOne}
+              playerTwo={playerTwo}
+              setActivePlayer={setActivePlayer}
+              setEreignisTrigger={setEreignisTrigger}
+              showWWEWinnerModal={showWWEWinnerModal}
+            />
+            <WannWarEsEreignis
+              ereignis={ereignis}
+              setEreignis={setEreignis}
+              activePlayer={activePlayer}
+              ereignisArrays={ereignisArrays}
+              ereignisTrigger={ereignisTrigger}
+              playerOne={playerOne}
+              playerTwo={playerTwo}
+            />
+          </>
         )}
       </main>
       <footer>

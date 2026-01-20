@@ -2,7 +2,23 @@ body {
   font-family: sans-serif;
   background-color: #fffdf5;
   color: black;
+  position: relative;
 }
+/* Haupt-Layer */
+.bg-pattern {
+  position: fixed;
+  inset: -200px; /* Etwas größer als der Screen wegen der Rotation */
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.14; /* Sehr dezent halten */
+
+  background-image: url("./photos/QuestionRaster2.png");
+  background-repeat: repeat; /* 'repeat' ist hier stabiler als 'space' */
+  background-size: 380px; /* Große Basis-Größe */
+  background-position: 0 0;
+  transform: rotate(0deg);
+}
+
 dialog img {
   display: block; /* Bild wird wie ein Block behandelt */
   margin: 0 auto; /* Zentriert das Bild */
@@ -48,13 +64,10 @@ header h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  text-shadow:
-          0 0 3px rgba(255, 120, 0, 0.5),
-          0 0 6px rgba(255, 170, 0, 0.35);
+  text-shadow: 0 0 3px rgba(255, 120, 0, 0.5), 0 0 6px rgba(255, 170, 0, 0.35);
 
-  animation:
-          glowPulse 2s ease-in-out infinite,
-          pulseText 2s ease-in-out infinite;
+  animation: glowPulse 2s ease-in-out infinite,
+    pulseText 2s ease-in-out infinite;
 }
 @keyframes pulseText {
   0%,
@@ -66,15 +79,13 @@ header h1 {
   }
 }
 @keyframes glowPulse {
-  0%, 100% {
-    text-shadow:
-            0 0 3px rgba(255, 120, 0, 0.45),
-            0 0 6px rgba(255, 170, 0, 0.3);
+  0%,
+  100% {
+    text-shadow: 0 0 3px rgba(255, 120, 0, 0.45), 0 0 6px rgba(255, 170, 0, 0.3);
   }
   50% {
-    text-shadow:
-            0 0 5px rgba(255, 130, 0, 0.6),
-            0 0 10px rgba(255, 180, 0, 0.45);
+    text-shadow: 0 0 5px rgba(255, 130, 0, 0.6),
+      0 0 10px rgba(255, 180, 0, 0.45);
   }
 }
 header p {
@@ -94,12 +105,14 @@ header div.header-div {
 }
 header div.orange {
   border: solid 5px orangered;
+  background-color: #fffdf5;
 }
 header div.orange.active {
   animation: blinkorange 1.2s ease-in-out infinite;
 }
 header div.blue {
   border: solid 5px #0000ff;
+  background-color: #fffdf5;
 }
 header div.blue.active {
   animation: blinkblue 1.2s ease-in-out infinite;
@@ -127,6 +140,7 @@ header div.blue.active {
   border-radius: 5px;
   margin: 1rem 4rem 2rem 4rem;
   text-align: center;
+  background-color: #fffdf5;
 }
 #player-count .player {
   margin: 2rem;
@@ -152,6 +166,7 @@ main {
 }
 main section.quiz-selection {
   border: 4px solid black;
+  background-color: #fffdf5;
   text-align: center;
   border-radius: 5px;
   display: inline-block;
@@ -203,6 +218,7 @@ main section.quiz-selection ol li.active button {
 }
 main section.others {
   border: 4px solid black;
+  background-color: #fffdf5;
   text-align: center;
   border-radius: 5px;
   display: inline-block;
@@ -312,6 +328,7 @@ dialog button:hover {
 }
 main div.quiz-grid {
   border: 4px solid black;
+  background-color: #fffdf5;
   border-radius: 8px;
   margin: 1rem 1.5rem 1rem 1.5rem;
   display: flex;
@@ -499,6 +516,9 @@ footer li {
   list-style-type: none;
   margin-top: 5px;
 }
+details {
+  margin-bottom: 16rem;
+}
 @media (max-width: 620px) {
   #player-count .player {
     width: 140px;
@@ -506,4 +526,114 @@ footer li {
   #player-count .player.play-2 {
     width: 110px;
   }
+}
+
+/*  Hier startet der "Wann War Es?" Modus Bereich */
+section.timeline-container {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.4rem;
+  margin: 3rem 1.8rem 3rem 1.8rem;
+}
+div#middle-line {
+  width: 0px;
+  height: auto;
+  border: 2.5px solid grey;
+  border-radius: 2px;
+  margin-bottom: 0.1rem;
+}
+.timeline-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0rem;
+}
+p.alpha-to-omega {
+  font-weight: 600;
+  color: rgb(113, 113, 113);
+  text-decoration: underline grey 2px;
+  margin: 0.6rem;
+  font-size: 1.4rem;
+}
+div.dot-line {
+  background: repeating-linear-gradient(
+    to bottom,
+    black 0 7px,
+    /* DASH-Länge */ transparent 7px 12px /* Abstand */
+  );
+  border-radius: 2px;
+  width: 4px;
+  height: 66px;
+  margin: 0px;
+}
+div.solid-line {
+  border: 2px solid black;
+  border-radius: 2px;
+  width: 0px;
+  height: 66px;
+  margin: 0px;
+}
+.timeline-add-btn {
+  height: 75px;
+  width: 75px;
+  font-size: 4rem;
+  background-color: #c5c5c5;
+  border: none;
+  transition: transform 0.25s ease;
+  text-align: center;
+}
+.timeline-add-btn:hover {
+  transform: scale(1.1);
+}
+div.timeline-event {
+  text-align: center;
+  border: 3px solid black;
+  border-radius: 5px;
+  background-color: #fffdf5;
+  padding: 0.1rem 2rem 0.1rem 2rem;
+  width: auto;
+  min-width: 250px;
+  height: 105px;
+}
+div.timeline-event h4 {
+  margin: 12.5px;
+  padding: 5px;
+}
+div.timeline-event p {
+  margin: 0;
+  padding: 2px;
+}
+
+section div.Zufall-H-Ereignis {
+  position: fixed;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  border: 4px solid black;
+  border-radius: 5px;
+  background-color: #fffdf5;
+  color: black;
+  font-size: 1.4rem;
+  padding: 1rem 1.8rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-between; /* Damit die Elemente links und rechts verteilt werden */
+  align-items: center; /* Zentriert den Text vertikal */
+
+  z-index: 9999; /* damit nix drüber liegt */
+}
+div#left-player {
+  border: 2px solid orangered;
+  border-radius: 2px;
+  width: 0px;
+  height: 120px;
+  margin-right: 10px;
+}
+div#right-player {
+  border: 2px solid blue;
+  border-radius: 2px;
+  width: 0px;
+  height: 120px;
+  margin-left: 10px;
 }

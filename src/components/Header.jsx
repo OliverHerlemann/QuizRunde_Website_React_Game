@@ -7,6 +7,7 @@ export default function Header({
   playerCount,
   soundOn,
   setSoundOn,
+  startQuiz
 }) {
   function toggleSound() {
     setSoundOn(!soundOn);
@@ -19,7 +20,7 @@ export default function Header({
       </button>
       <h1>QUIZ RUNDE</h1>
       <div className="header-div">
-        {quizActive ? (
+        {(quizActive || startQuiz) ? (
           <PlayerInfoBox
             playerOne={playerOne}
             playerTwo={playerTwo}

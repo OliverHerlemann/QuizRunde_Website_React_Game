@@ -9,11 +9,16 @@ export default function Settings({
   playerCount,
   setPlayerCount,
   showModal,
+  showWannWarEsModal,
   showSettingsModal,
+  showQuestionTimerModal,
   pointStealerFactor,
+  questionTime,
+  quizModus,
+  setStartQuiz,
 }) {
   const { quizData, setQuizData } = useQuizData();
-  const selectedIndex = quizData.findIndex((data) => data.isSelected === true);
+  let selectedIndex = quizData.findIndex((data) => data.isSelected === true);
 
   const [showQuizMsg, setShowQuizMsg] = useState(false);
 
@@ -37,7 +42,11 @@ export default function Settings({
   }
   function handleStart() {
     setShowQuizMsg(true);
-    if (selectedIndex !== -1) {
+    if (quizModus !== undefined) {
+      if (quizModus === "WannWarEs") {
+        setStartQuiz(true);
+        selectedIndex = 0;
+      }
       if (quizData[selectedIndex].isSelected) {
         const updatedQuizData = quizData.map((item, index) => ({
           ...item,
@@ -87,8 +96,18 @@ export default function Settings({
       <section className="quiz-selection">
         <h3>Quiz Auswahl</h3>
         <ol>
+          <li className={quizModus === "WannWarEs" ? "active" : ""}>
+            <button onClick={() => showWannWarEsModal()}>
+              Modus: Wann war es?
+            </button>
+          </li>
           {quizData.map((item, index) => (
-            <li key={index} className={item.isSelected ? "active" : ""}>
+            <li
+              key={index}
+              className={
+                item.isSelected && quizModus !== "WannWarEs" ? "active" : ""
+              }
+            >
               <button onClick={() => handleQuizClick(index)}>
                 {item.name}
               </button>
@@ -100,9 +119,13 @@ export default function Settings({
         <h3>Sonstige Einstellungen</h3>
         <button onClick={showSettingsModal}>
           Punkte klauen: {pointStealerFactor}%
-        </button>
+        </button>{" "}
+        {/* Timerbutton! folgt:
+        <button onClick={showQuestionTimerModal}>
+          Fragen-Timer: {questionTime !== null ? questionTime + "s" : "Aus"}
+        </button> */}
       </section>
-      {selectedIndex === -1 && showQuizMsg && (
+      {selectedIndex === -1 && showQuizMsg && quizModus === undefined && (
         <p id="showQuizMsg">Bitte wähle ein Quiz aus.</p>
       )}
       <button id="start-button" onClick={handleStart}>

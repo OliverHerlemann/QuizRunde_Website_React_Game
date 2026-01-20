@@ -1,7 +1,7 @@
 import { useQuizData } from "./QuizDataProvider.jsx";
 import { useImperativeHandle, useRef } from "react";
 
-export default function QuizSelectionModal({ ref }) {
+export default function QuizSelectionModal({ ref, setQuizModus }) {
   const { quizData, setQuizData } = useQuizData();
 
   const dialogRef = useRef();
@@ -19,6 +19,7 @@ export default function QuizSelectionModal({ ref }) {
         isSelected: i === activeIndex, // nur der angeklickte Index wird true
       }));
       setQuizData(updatedQuizData);
+      setQuizModus(null);
       dialogRef.current?.close();
     } else if (type === "cancel") {
       dialogRef.current?.close();
